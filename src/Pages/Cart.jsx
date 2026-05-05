@@ -29,7 +29,7 @@ function Cart() {
         return;
       }
 
-      const res = await axios.post("https://d-d-backend-1.onrender.com", {
+      const res = await axios.post("https://d-d-backend-1.onrender.com/create-order", {
         amount: total
       });
 
@@ -64,7 +64,7 @@ function Cart() {
             orderData.paymentId = response.razorpay_payment_id;
             orderData.paymentStatus = "Paid";
 
-            await axios.post("https://d-d-backend-1.onrender.com", orderData);
+            await axios.post("https://d-d-backend-1.onrender.com/order", orderData);
 
             localStorage.setItem("invoice", JSON.stringify(orderData));
 

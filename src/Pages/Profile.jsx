@@ -19,7 +19,7 @@ function Profile() {
     setUser(storedUser);
 
     axios
-      .get(`https://d-d-backend-1.onrender.com/${storedUser._id}`)
+      .get(`https://d-d-backend-1.onrender.com/orders/${storedUser._id}`)
       .then((res) => setOrders(res.data))
       .catch(() => setOrders([]))
       .finally(() => setLoading(false));

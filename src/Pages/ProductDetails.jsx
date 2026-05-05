@@ -10,7 +10,7 @@ function ProductDetails() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`https://d-d-backend-1.onrender.com/${id}`)
+    axios.get(`https://d-d-backend-1.onrender.com/products/${id}`)
       .then(res => setProduct(res.data))
       .catch(err => console.log(err));
   }, [id]);

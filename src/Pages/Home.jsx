@@ -26,7 +26,7 @@ function Home() {
         if (category) params.category = category;
         if (search) params.search = search;
 
-        const res = await axios.get("https://d-d-backend-1.onrender.com", { params });
+        const res = await axios.get("https://d-d-backend-1.onrender.com/products", { params });
 
         const updated = res.data.map((p) => ({
           ...p,
