@@ -10,28 +10,50 @@ function ProductDetails() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`https://d-d-backend-1.onrender.com/products/${id}`)
-      .then(res => setProduct(res.data))
-      .catch(err => console.log(err));
+    axios
+      .get(`https://d-d-backend-1.onrender.com/products/${id}`)
+      .then((res) => setProduct(res.data))
+      .catch((err) => console.log(err));
   }, [id]);
 
   if (!product) return <p className="p-6">Loading...</p>;
 
   return (
-    <div className="p-6 flex gap-10">
-      <img src={product.image} className="h-80 rounded" />
+    <div className="p-6 flex flex-col md:flex-row gap-10">
 
-      <div>
-        <h1 className="text-2xl font-bold">{product.name}</h1>
-        <p className="text-xl text-pink-600 mt-2">₹{product.price}</p>
+      <div className="bg-gray-100 p-4 rounded-xl">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="h-80 w-80 object-cover rounded-xl"
+        />
+      </div>
+
+      <div className="flex-1">
+        <h1 className="text-3xl font-bold">
+          {product.name}
+        </h1>
+
+        <p className="text-gray-500 mt-2 capitalize">
+          {product.category}
+        </p>
+
+        <p className="text-3xl text-pink-600 font-bold mt-4">
+          ₹{product.price}
+        </p>
+
+        <p className="mt-4 text-gray-600">
+          Premium quality product with stylish design and comfortable fit.
+        </p>
 
         <button
           onClick={() => dispatch(addToCart(product))}
-          className="mt-5 bg-black text-white px-6 py-2 rounded hover:bg-gray-800"
+          className="mt-6 bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800"
         >
           Add to Cart
         </button>
       </div>
+
     </div>
   );
 }
